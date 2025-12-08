@@ -808,7 +808,6 @@ export const OnboardingModal = ({
                                 ${isTypeSelected('other') ? 'border-green-600 bg-green-50 text-gray-900 shadow-sm' : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'}`}>
                               <div className="flex items-center justify-between">
                                 <span>Other</span>
-                                {/* Green dot removed */}
                               </div>
                             </button>
                             <input type="text" placeholder="Enter here..." value={typeOtherText} onChange={e => setTypeOtherText(e.target.value)} onFocus={handleTypeOtherFocus} className={`flex-1 px-6 py-4 text-base rounded-xl border-2 transition-all duration-200 focus:outline-none 
