@@ -161,7 +161,6 @@ export const CreationTypeModal = ({
                         ${isSelected('landing') ? 'border-green-600 bg-green-50 text-gray-900 shadow-sm' : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'}`}>
                         <div className="flex items-center justify-between">
                             <span>Landing Pages</span>
-                            {/* Green dot removed */}
                         </div>
                     </button>
 
@@ -169,7 +168,6 @@ export const CreationTypeModal = ({
                         ${isSelected('marketing') ? 'border-green-600 bg-green-50 text-gray-900 shadow-sm' : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'}`}>
                         <div className="flex items-center justify-between">
                             <span>Marketing Websites</span>
-                            {/* Green dot removed */}
                         </div>
                     </button>
                   </div>
@@ -179,7 +177,6 @@ export const CreationTypeModal = ({
                             ${isSelected('dashboards') ? 'border-green-600 bg-green-50 text-gray-900 shadow-sm' : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'}`}>
                         <div className="flex items-center justify-between">
                             <span>Dashboards</span>
-                            {/* Green dot removed */}
                         </div>
                     </button>
 
@@ -187,7 +184,6 @@ export const CreationTypeModal = ({
                             ${isSelected('design-systems') ? 'border-green-600 bg-green-50 text-gray-900 shadow-sm' : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'}`}>
                         <div className="flex items-center justify-between">
                             <span>Design Systems</span>
-                            {/* Green dot removed */}
                         </div>
                     </button>
                   </div>

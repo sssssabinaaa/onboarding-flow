@@ -492,6 +492,30 @@ export const OnboardingModal = ({
     if (currentQuestion === 3 && selectedFeatures.length > 0) {
       const selectedFeature = selectedFeatures[0]; // Take the first one since it's single select
       const VisualComponent = featureVisualsMap[selectedFeature] || OtherVisual;
+      
+      // Design variants gets full panel treatment
+      if (selectedFeature === 'design-variants') {
+        return <div className="relative w-full h-full">
+          <AnimatePresence mode="wait">
+            <motion.div key={selectedFeature} initial={{
+              opacity: 0
+            }} animate={{
+              opacity: 1,
+              transition: {
+                duration: 0.3
+              }
+            }} exit={{
+              opacity: 0,
+              transition: {
+                duration: 0.2
+              }
+            }} className="w-full h-full">
+              <VisualComponent />
+            </motion.div>
+          </AnimatePresence>
+        </div>;
+      }
+      
       return <div className="relative w-full h-full max-w-2xl max-h-[600px] flex items-center justify-center perspective-1000">
           <AnimatePresence mode="wait">
             <motion.div key={selectedFeature} initial={{

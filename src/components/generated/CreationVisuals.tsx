@@ -1,5 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import dashboardImg from '../../public/dashboard.png';
+import variantOriginal from '../../public/sabinavariantoriginal.png';
+import variant1 from '../../public/sabinavariant1.png';
+import variant2 from '../../public/sabinavariant2.png';
+import variant3 from '../../public/sabinavariant3.png';
+import variant4 from '../../public/sabinavariant4.png';
+import variant5 from '../../public/sabinavariant5.png';
 
 // Shared Window Frame Component
 export const WindowFrame = ({
@@ -91,33 +98,8 @@ export const MarketingVisual = () => <WindowFrame title="Campaign Site" color="b
     </div>
   </WindowFrame>;
 export const DashboardVisual = () => <WindowFrame title="Analytics" color="bg-blue-50">
-    <div className="p-4 grid grid-cols-2 gap-3 h-full">
-      <div className="col-span-2 flex gap-3 h-16">
-        <div className="flex-1 bg-blue-50 rounded-lg p-2 flex flex-col justify-between">
-            <div className="w-12 h-2 bg-blue-200 rounded" />
-            <div className="w-8 h-4 bg-blue-400 rounded" />
-        </div>
-        <div className="flex-1 bg-green-50 rounded-lg p-2 flex flex-col justify-between">
-            <div className="w-12 h-2 bg-green-200 rounded" />
-            <div className="w-8 h-4 bg-green-400 rounded" />
-        </div>
-        <div className="flex-1 bg-purple-50 rounded-lg p-2 flex flex-col justify-between">
-            <div className="w-12 h-2 bg-purple-200 rounded" />
-            <div className="w-8 h-4 bg-purple-400 rounded" />
-        </div>
-      </div>
-      <div className="bg-gray-50 rounded-lg p-2 flex items-end justify-between gap-1 h-28">
-         <div className="w-full bg-blue-300 rounded-t h-[40%]" />
-         <div className="w-full bg-blue-300 rounded-t h-[70%]" />
-         <div className="w-full bg-blue-300 rounded-t h-[50%]" />
-         <div className="w-full bg-blue-300 rounded-t h-[80%]" />
-      </div>
-      <div className="bg-gray-50 rounded-lg flex items-center justify-center h-28 relative">
-        <svg viewBox="0 0 36 36" className="w-16 h-16 text-indigo-400 transform -rotate-90">
-            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" strokeWidth="6" strokeDasharray="75, 100" />
-            <path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e2e8f0" strokeWidth="6" strokeDasharray="25, 100" strokeDashoffset="-75" />
-        </svg>
-      </div>
+    <div className="gap-3 h-full">
+      <img src={dashboardImg} alt="Dashboard" className="w-full h-full object-cover" />
     </div>
   </WindowFrame>;
 export const DesignSystemVisual = () => <WindowFrame title="Foundations" color="bg-pink-50">
@@ -221,33 +203,178 @@ export const BrandedSitesVisual = () => <WindowFrame title="Brand Guide" color="
         </div>
     </div>
 </WindowFrame>;
-export const DesignVariantsVisual = () => <WindowFrame title="A/B Testing" color="bg-violet-50">
-    <div className="h-full flex relative">
-        <div className="w-1/2 h-full border-r border-gray-200 p-3 bg-white">
-            <div className="absolute top-2 left-2 text-[8px] font-bold text-gray-400 bg-gray-100 px-1 rounded">VAR A</div>
-            <div className="mt-4 space-y-2">
-                <div className="w-full h-20 bg-blue-100 rounded-lg mb-2" />
-                <div className="w-full h-2 bg-gray-200 rounded" />
-                <div className="w-2/3 h-2 bg-gray-200 rounded" />
-                <div className="w-20 h-6 bg-blue-500 rounded mt-2" />
-            </div>
+export const DesignVariantsVisual = () => {
+  const variants = [variant1, variant2, variant3, variant4, variant5];
+  
+  // Mini window frame for each image with hover effect
+  const ImageFrame = ({ src, alt }: { src: string; alt: string }) => (
+    <motion.div 
+      className="bg-white rounded-lg shadow-xl border border-gray-200 overflow-hidden h-full"
+      whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+    >
+      <div className="bg-gray-100 px-2 py-1 flex items-center gap-1.5 border-b border-gray-200">
+        <div className="w-2 h-2 rounded-full bg-red-400" />
+        <div className="w-2 h-2 rounded-full bg-yellow-400" />
+        <div className="w-2 h-2 rounded-full bg-green-400" />
+      </div>
+      <img src={src} alt={alt} className="w-full h-[calc(100%-20px)] object-cover" />
+    </motion.div>
+  );
+  
+  return (
+    <div className="w-full h-full bg-gray-50 p-4 overflow-hidden flex flex-col items-center">
+      {/* Grid background */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:24px_24px]" />
+      
+      {/* Original Design - Top Center */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.8, y: -30 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ 
+          type: "spring",
+          stiffness: 300,
+          damping: 20,
+          duration: 0.6 
+        }}
+        className="relative z-10 w-[38%] h-[26%] mb-1"
+      >
+        <ImageFrame src={variantOriginal} alt="Original design" />
+        {/* Glow effect */}
+        <motion.div 
+          className="absolute -inset-2 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl blur-xl -z-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 0.5, 0] }}
+          transition={{ delay: 0.3, duration: 1.5, repeat: Infinity, repeatDelay: 3 }}
+        />
+      </motion.div>
+
+      {/* Arrow Down 1 - Animated bounce */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.3 }}
+        className="relative z-10 text-gray-800 text-xl leading-none"
+      >
+        <motion.span
+          animate={{ y: [0, 3, 0] }}
+          transition={{ delay: 0.6, duration: 0.8, repeat: 2, ease: "easeInOut" }}
+          className="inline-block"
+        >
+          ↓
+        </motion.span>
+      </motion.div>
+
+      {/* Chat Prompt - Typing effect style */}
+      <motion.div 
+        initial={{ opacity: 0, width: 0 }}
+        animate={{ opacity: 1, width: "auto" }}
+        transition={{ delay: 0.6, duration: 0.4 }}
+        className="relative z-10 my-0.5 overflow-hidden"
+      >
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7 }}
+          className="bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm border border-gray-200"
+        >
+          <span className="text-[10px] font-medium text-gray-700">
+            show me different colors and layouts
+          </span>
+          <motion.span
+            animate={{ opacity: [1, 0, 1] }}
+            transition={{ duration: 0.8, repeat: 3, delay: 0.8 }}
+            className="inline-block w-0.5 h-3 bg-purple-500 ml-1 align-middle"
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* Arrow Down 2 - Animated bounce */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.9, duration: 0.3 }}
+        className="relative z-10 text-gray-800 text-xl leading-none mb-1"
+      >
+        <motion.span
+          animate={{ y: [0, 3, 0] }}
+          transition={{ delay: 1.1, duration: 0.8, repeat: 2, ease: "easeInOut" }}
+          className="inline-block"
+        >
+          ↓
+        </motion.span>
+      </motion.div>
+
+      {/* Sparkle effects */}
+      {[...Array(6)].map((_, i) => (
+        <motion.div
+          key={`sparkle-${i}`}
+          className="absolute text-yellow-400 pointer-events-none z-20"
+          style={{
+            left: `${20 + (i % 3) * 30}%`,
+            top: `${50 + Math.floor(i / 3) * 25}%`
+          }}
+          initial={{ opacity: 0, scale: 0, rotate: 0 }}
+          animate={{ 
+            opacity: [0, 1, 0],
+            scale: [0, 1.2, 0],
+            rotate: [0, 180, 360]
+          }}
+          transition={{ 
+            delay: 1.2 + i * 0.1,
+            duration: 0.6,
+            ease: "easeOut"
+          }}
+        >
+          ✨
+        </motion.div>
+      ))}
+
+      {/* Variants Grid - 2 on top, 3 on bottom */}
+      <div className="relative z-10 w-full flex-1 flex flex-col gap-2 px-2">
+        {/* Top Row - 2 variants */}
+        <div className="flex gap-4 justify-center flex-1">
+          {variants.slice(0, 2).map((variant, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.5, y: 40, rotateX: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
+              transition={{ 
+                delay: 1.1 + index * 0.2,
+                type: "spring",
+                stiffness: 200,
+                damping: 20
+              }}
+              className="w-[44%] h-full"
+            >
+              <ImageFrame src={variant} alt={`Variant ${index + 1}`} />
+            </motion.div>
+          ))}
         </div>
-        <div className="w-1/2 h-full p-3 bg-gray-50">
-            <div className="absolute top-2 right-2 text-[8px] font-bold text-gray-400 bg-white px-1 rounded shadow-sm">VAR B</div>
-            <div className="mt-4 space-y-2">
-                <div className="w-full h-20 bg-violet-100 rounded-xl mb-2" />
-                <div className="w-full h-2 bg-gray-300 rounded" />
-                <div className="w-2/3 h-2 bg-gray-300 rounded" />
-                <div className="w-full h-8 bg-violet-600 rounded-full mt-2" />
-            </div>
+        
+        {/* Bottom Row - 3 variants */}
+        <div className="flex gap-3 justify-center flex-1">
+          {variants.slice(2, 5).map((variant, index) => (
+            <motion.div
+              key={index + 2}
+              initial={{ opacity: 0, scale: 0.5, y: 40, rotateX: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0, rotateX: 0 }}
+              transition={{ 
+                delay: 1.5 + index * 0.15,
+                type: "spring",
+                stiffness: 200,
+                damping: 20
+              }}
+              className="w-[100%] h-full"
+            >
+              <ImageFrame src={variant} alt={`Variant ${index + 3}`} />
+            </motion.div>
+          ))}
         </div>
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-6 h-6 bg-white rounded-full shadow border border-gray-200 flex items-center justify-center text-[10px] font-bold text-gray-400">
-                VS
-            </div>
-        </div>
+      </div>
     </div>
-</WindowFrame>;
+  );
+};
 export const ExportingCodeVisual = () => <WindowFrame title="Code Output" color="bg-gray-800">
     <div className="h-full bg-gray-900 p-4 font-mono text-[10px] overflow-hidden text-gray-300 space-y-2">
         <div className="flex gap-2 mb-4">

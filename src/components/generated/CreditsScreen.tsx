@@ -121,7 +121,7 @@ export const CreditsScreen = ({ onGetStarted, onSkip }: CreditsScreenProps) => {
           <FeatureCard 
             title="Export to Code" 
             image={exportToCodeImg}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] w-[450px] h-72 z-20 shadow-2xl"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] w-96 h-64 z-20 shadow-2xl"
           />
 
         </div>
