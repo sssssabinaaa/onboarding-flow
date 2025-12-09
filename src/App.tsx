@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Container, Theme } from './settings/types';
-import { OnboardingModal } from './components/generated/OnboardingModal';
+import { OnboardingModal, OnboardingData } from './components/generated/OnboardingModal';
 import { CreditsScreen } from './components/generated/CreditsScreen';
 import { AnimatePresence } from 'framer-motion';
+import { Toaster, toast } from 'sonner';
 import magicpathLogo from './public/magicpath.svg';
 
 let theme: Theme = 'light';
@@ -37,6 +38,14 @@ function App() {
     setShowOnboarding(false);
   };
 
+  const handleOnboardingComplete = (data: OnboardingData) => {
+    setShowOnboarding(false);
+    toast.success('Thank you! 5 credits have been added to your account.', {
+      duration: 5000,
+    });
+    console.log('Onboarding data:', data);
+  };
+
   const generatedComponent = (
     <>
       <AnimatePresence>
@@ -44,7 +53,7 @@ function App() {
           <CreditsScreen onGetStarted={handleGetStarted} onSkip={handleSkip} />
         )}
       </AnimatePresence>
-      <OnboardingModal isOpen={showOnboarding} onClose={handleOnboardingClose} />
+      <OnboardingModal isOpen={showOnboarding} onClose={handleOnboardingClose} onComplete={handleOnboardingComplete} />
     </>
   );
 
@@ -190,6 +199,19 @@ function App() {
     return (
       <div className="h-full w-full flex flex-col items-center justify-center">
         {generatedComponent}
+        <Toaster 
+          position="bottom-center" 
+          offset={80}
+          toastOptions={{
+            style: {
+              background: '#f5f5f0',
+              border: '1px solid #e5e5dc',
+              color: '#374151',
+              fontSize: '14px',
+              fontWeight: '500',
+            },
+          }}
+        />
       </div>
     );
   } else {
@@ -197,6 +219,20 @@ function App() {
       <>
         {baseUI}
         {generatedComponent}
+        <Toaster 
+          position="bottom-center" 
+          offset={80}
+          style={{ marginLeft: '128px' }}
+          toastOptions={{
+            style: {
+              background: '#f5f5f0',
+              border: '1px solid #e5e5dc',
+              color: '#374151',
+              fontSize: '14px',
+              fontWeight: '500',
+            },
+          }}
+        />
       </>
     );
   }
